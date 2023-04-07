@@ -1,7 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import { saveAs } from 'file-saver';
 
 
 
@@ -193,33 +192,7 @@ function App() {
     event.preventDefault();
 
   };
-  const handleSignUpSubmit = (event) => {
-    event.preventDefault();
-    // Handle registration logic here
-    const newData = {
-      first_name: firstName,
-      last_name: lastName,
-      location: address,
-      birth_date: dateOfBirth,
-      email_address: email,
-      user_password: password
-    };
-
-    // fetch('account.json', {
-    //   method: 'PUT',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(newData)
-    // })
-    //   .then(response => console.log(response))
-    //   .catch(error => console.error(error));
-    const jsonStr = JSON.stringify(newData);
-    localStorage.setItem('data', jsonStr);
-    
-
-
-  };
+  a
   // const data = localStorage.getItem('data');
   // const jsonData = JSON.stringify(data);
   // console.log(jsonData);
