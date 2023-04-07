@@ -175,6 +175,28 @@ const RegisterPage = (registerPage) => {
   );
 };
 
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+
+function hasNumber(str) {
+  return /\d/.test(str);
+}
+
+function isOver18Years(dateStr) {
+  const inputDate = new Date(dateStr);
+  const currentDate = new Date();
+  const diff = currentDate.getTime() - inputDate.getTime();
+  const diffYears = diff / (1000 * 60 * 60 * 24 * 365.25); // Approximate number of years (leap year is taken into account)
+  return diffYears >= 18;
+}
+function isValidPassword(password) {
+  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+  return passwordRegex.test(password);
+}
+
 function App() {
   const [registerpage, setRegisterpage] = useState(false);
 
@@ -222,12 +244,31 @@ function App() {
       user_password: password
     };
     // validation
+    let alert_message = ""
     if((newData.first_name==="") 
     || (newData.last_name==="") 
     ||(newData.user_password==="") 
     ||(newData.location==="") 
     ){
       alert("no empty fields")
+    }else if (hasNumber(newData.first_name)){
+      alert_message.concat("first name can not a number.\n")
+    }else if (hasNumber(newData.last_name)){
+      alert_message.concat("last name can not a number.\n")
+
+    }else if (isOver18Years(newData.birth_date)){
+      alert_message.concat("you must be over 18 years old.\n")
+
+    }else if (isValidEmail(newData.email_address)){
+      alert_message.concat("invalid email address.\n")
+
+    }else if (isValidPassword(newData.user_password)){
+      alert_message.concat("invalid password.\n " +
+          "At least 8 characters long\n" +
+          "Contains at least one uppercase letter\n" +
+          "Contains at least one lowercase letter\n" +
+          "Contains at least one number\n")
+
     }else{
       // Retrieve the existing array from local storage
     const myArray = JSON.parse(localStorage.getItem('myArray')) || [];
@@ -249,7 +290,10 @@ function App() {
     localStorage.setItem('myArray', jsonArray);
     console.log(JSON.stringify(myArray))
     }
-    
+    console.log(alert_message!=="")
+    if (alert_message!==""){
+      alert(alert_message)
+    }
 
   };
   // const data = localStorage.getItem('data');
@@ -356,7 +400,7 @@ function App() {
                     <Form.Group controlId="formBasicEmail">
                       <Form.Label>Email address</Form.Label>
                       <Form.Control
-                        type="email"
+                        type="text"
                         placeholder="Enter email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
