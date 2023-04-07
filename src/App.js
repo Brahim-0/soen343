@@ -192,7 +192,37 @@ function App() {
     event.preventDefault();
 
   };
-  a
+  const handleSignUpSubmit = (event) => {
+    event.preventDefault();
+    // Handle registration logic here
+    const newData = {
+      first_name: firstName,
+      last_name: lastName,
+      location: address,
+      birth_date: dateOfBirth,
+      email_address: email,
+      user_password: password
+    };
+    // Retrieve the existing array from local storage
+    const myArray = JSON.parse(localStorage.getItem('myArray')) || [];
+    console.log(myArray)
+    // Add new data to the array
+    let bool = false;
+    myArray.forEach((obj)=>{
+      if (obj.email_address===newData.email_address){
+        bool = true
+      }
+    })
+    if (bool===false){
+      myArray.push(newData);
+    }
+
+
+    // Store the updated array back in local storage
+    localStorage.setItem('myArray', JSON.stringify(myArray));
+    console.log(JSON.stringify(myArray))
+
+  };
   // const data = localStorage.getItem('data');
   // const jsonData = JSON.stringify(data);
   // console.log(jsonData);
