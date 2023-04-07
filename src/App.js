@@ -190,7 +190,25 @@ function App() {
 
   const handleLoginSubmit = (event) => {
     event.preventDefault();
-
+    const login_data = {
+      email_address: email,
+      user_password: password    }
+    const myArray = JSON.parse(localStorage.getItem('myArray')) || [];
+    let bool = false 
+    myArray.forEach((obj)=>{
+      if(obj.email_address === login_data.email_address){
+        if(obj.user_password === login_data.user_password){
+          bool = true;
+        }
+      }
+    })
+    if(bool){
+      alert("you have successfully logged in")
+    }else{
+      alert("wrong parameters of authentication")
+ 
+    }
+    
   };
   const handleSignUpSubmit = (event) => {
     event.preventDefault();
@@ -219,7 +237,8 @@ function App() {
 
 
     // Store the updated array back in local storage
-    localStorage.setItem('myArray', JSON.stringify(myArray));
+    const jsonArray = JSON.stringify(myArray)
+    localStorage.setItem('myArray', jsonArray);
     console.log(JSON.stringify(myArray))
 
   };
