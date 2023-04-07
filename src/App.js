@@ -19,6 +19,7 @@ const LoginPage = (registerPage) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle login logic here
+
   };
 
   return (
@@ -241,7 +242,7 @@ function App() {
                       type="email"
                       placeholder="Enter email"
                       value={email}
-                      onChange={handleEmailChange}
+                      onChange={(e)=>setEmail(e.target.value)}
                       className="mb-3"
                   />
                 </Form.Group>
@@ -252,7 +253,7 @@ function App() {
                       type="password"
                       placeholder="Password"
                       value={password}
-                      onChange={handlePasswordChange}
+                      onChange={(e)=>setPassword(e.target.value)}
                       className="mb-3"
                   />
                 </Form.Group>
@@ -281,7 +282,7 @@ function App() {
                         type="text"
                         placeholder="Enter First Name"
                         value={firstName}
-                        onChange={handleFirstNameChange}
+                        onChange={(e)=>setFirstName(e.target.value)}
                         required
                     />
                   </Form.Group>
@@ -293,7 +294,7 @@ function App() {
                         type="text"
                         placeholder="Enter Last Name"
                         value={lastName}
-                        onChange={handleLastNameChange}
+                        onChange={(e)=>setLastName(e.target.value)}
                         required
                     />
                   </Form.Group>
@@ -306,7 +307,7 @@ function App() {
                     type="text"
                     placeholder="Enter Address"
                     value={address}
-                    onChange={handleAddressChange}
+                    onChange={(e)=>setAddress(e.target.value)}
                     required
                 />
               </Form.Group>
@@ -318,7 +319,7 @@ function App() {
                     <Form.Control
                         type="date"
                         value={dateOfBirth}
-                        onChange={handleDateOfBirthChange}
+                        onChange={(e)=>setDateOfBirth(e.target.value)}
                         required
                     />
                   </Form.Group>
@@ -330,7 +331,19 @@ function App() {
                         type="email"
                         placeholder="Enter email"
                         value={email}
-                        onChange={handleEmailChange}
+                        onChange={(e)=>setEmail(e.target.value)}
+                        required
+                    />
+                  </Form.Group>
+                </Col>
+                <Col>
+                  <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control
+                        type="password"
+                        placeholder="password"
+                        value={password}
+                        onChange={(e)=>setPassword(e.target.value)}
                         required
                     />
                   </Form.Group>
