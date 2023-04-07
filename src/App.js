@@ -221,7 +221,15 @@ function App() {
       email_address: email,
       user_password: password
     };
-    // Retrieve the existing array from local storage
+    // validation
+    if((newData.first_name==="") 
+    || (newData.last_name==="") 
+    ||(newData.user_password==="") 
+    ||(newData.location==="") 
+    ){
+      alert("no empty fields")
+    }else{
+      // Retrieve the existing array from local storage
     const myArray = JSON.parse(localStorage.getItem('myArray')) || [];
     console.log(myArray)
     // Add new data to the array
@@ -240,6 +248,8 @@ function App() {
     const jsonArray = JSON.stringify(myArray)
     localStorage.setItem('myArray', jsonArray);
     console.log(JSON.stringify(myArray))
+    }
+    
 
   };
   // const data = localStorage.getItem('data');
