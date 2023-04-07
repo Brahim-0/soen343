@@ -190,11 +190,32 @@ function App() {
 
   const handleLoginSubmit = (event) => {
     event.preventDefault();
-    // Handle registration logic here
+
+    const fs = require('fs');
+
+    fs.readFile('data.json', (err, data) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      const jsonData = JSON.parse(data);
+      console.log(jsonData);
+    });
   };
   const handleSignUpSubmit = (event) => {
     event.preventDefault();
     // Handle registration logic here
+    const fs = require('fs');
+
+    const data = { name: 'John Doe', age: 42 };
+
+    fs.writeFile('data.json', JSON.stringify(data), (err) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      console.log('Data written to file');
+    });
   };
 
   return (
