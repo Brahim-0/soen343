@@ -25,12 +25,12 @@ function App() {
     const inputDate = new Date(dateStr);
     const currentDate = new Date();
     const diff = currentDate.getTime() - inputDate.getTime();
-    
+
     const diffYears = diff / (1000 * 60 * 60 * 24 * 365.25); // Approximate number of years (leap year is taken into account)
     return diffYears >= 18;
   }
 
-  function IsValidDate(dateStr){
+  function IsValidDate(dateStr) {
     const inputDate = new Date(dateStr);
     const currentDate = new Date();
     return inputDate > currentDate;
@@ -105,7 +105,7 @@ function App() {
     if (IsValidDate(newData.birth_date)) {
       alert_message += "Incorrect Date.\n"
       console.log(alert_message)
-    }else {
+    } else {
       if (!isOver18Years(newData.birth_date)) {
         alert_message += "you must be over 18 years old.\n"
         console.log(alert_message)
@@ -124,6 +124,8 @@ function App() {
       console.log(alert_message)
     }
     if (alert_message === "") {
+
+      alert("successfully registered")
       // Retrieve the existing array from local storage
       const myArray = JSON.parse(localStorage.getItem('myArray')) || [];
       // Add new data to the array
@@ -146,6 +148,8 @@ function App() {
     if (alert_message !== "") {
       alert(alert_message)
     }
+
+    setRegisterpage(false)
 
   };
   // const data = localStorage.getItem('data');
@@ -184,7 +188,7 @@ function App() {
                 <Button variant="primary" type="submit" className="w-100 mt-3">
                   Submit
                 </Button>
-                <Button variant="red" type="submit" className="w-100 mt-3" onClick={() => { setRegisterpage(true) }} >
+                <Button variant="red" className="w-100 mt-3" onClick={() => { setRegisterpage(true) }} >
                   Register
                 </Button>
               </Form>
@@ -274,8 +278,11 @@ function App() {
                   </Col>
                 </Row>
 
-                <Button variant="primary" type="submit" className="w-100 mt-3">
+                <Button variant="primary" type="submit" className="w-100 mt-3" >
                   Register
+                </Button>
+                <Button variant="red" className="w-100 mt-3" onClick={() => { setRegisterpage(false) }} >
+                  Login
                 </Button>
               </Form>
             </Col>
