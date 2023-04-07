@@ -100,13 +100,15 @@ function App() {
       alert_message += "last name can not a number.\n"
       console.log(alert_message)
     }
-    if (!isOver18Years(newData.birth_date)) {
-      alert_message += "you must be over 18 years old.\n"
-      console.log(alert_message)
-    }
+
     if (IsValidDate(newData.birth_date)) {
-      alert_message += "need correct data.\n"
+      alert_message += "Incorrect Date.\n"
       console.log(alert_message)
+    }else {
+      if (!isOver18Years(newData.birth_date)) {
+        alert_message += "you must be over 18 years old.\n"
+        console.log(alert_message)
+      }
     }
     if (!isValidEmail(newData.email_address)) {
       alert_message += "invalid email address.\n"
