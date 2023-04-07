@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { saveAs } from 'file-saver';
 
 
 
@@ -23,42 +24,42 @@ const LoginPage = (registerPage) => {
   };
 
   return (
-      <Container>
-        <Row className="justify-content-center mt-5">
-          <Col xs={12} md={6}>
-            <h1 className="text-center mb-4">Login</h1>
-            <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                    type="email"
-                    placeholder="Enter email"
-                    value={email}
-                    onChange={handleEmailChange}
-                    className="mb-3"
-                />
-              </Form.Group>
+    <Container>
+      <Row className="justify-content-center mt-5">
+        <Col xs={12} md={6}>
+          <h1 className="text-center mb-4">Login</h1>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={handleEmailChange}
+                className="mb-3"
+              />
+            </Form.Group>
 
-              <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={handlePasswordChange}
-                    className="mb-3"
-                />
-              </Form.Group>
-              <Button variant="primary" type="submit" className="w-100 mt-3">
-                Submit
-              </Button>
-              <Button variant="red" type="submit" className="w-100 mt-3" onClick={()=> registerPage= true}>
-                Register
-              </Button>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={handlePasswordChange}
+                className="mb-3"
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit" className="w-100 mt-3">
+              Submit
+            </Button>
+            <Button variant="red" type="submit" className="w-100 mt-3" onClick={() => registerPage = true}>
+              Register
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
@@ -96,82 +97,82 @@ const RegisterPage = (registerPage) => {
   };
 
   return (
-      <Container>
-        <Row className="justify-content-center mt-5">
-          <Col xs={12} md={8} lg={6}>
-            <h1 className="text-center mb-4">Register</h1>
-            <Form onSubmit={handleSubmit}>
-              <Row>
-                <Col>
-                  <Form.Group controlId="formBasicFirstName">
-                    <Form.Label>First Name</Form.Label>
-                    <Form.Control
-                        type="text"
-                        placeholder="Enter First Name"
-                        value={firstName}
-                        onChange={handleFirstNameChange}
-                        required
-                    />
-                  </Form.Group>
-                </Col>
-                <Col>
-                  <Form.Group controlId="formBasicLastName">
-                    <Form.Label>Last Name</Form.Label>
-                    <Form.Control
-                        type="text"
-                        placeholder="Enter Last Name"
-                        value={lastName}
-                        onChange={handleLastNameChange}
-                        required
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-
-              <Form.Group controlId="formBasicAddress">
-                <Form.Label>Address</Form.Label>
-                <Form.Control
+    <Container>
+      <Row className="justify-content-center mt-5">
+        <Col xs={12} md={8} lg={6}>
+          <h1 className="text-center mb-4">Register</h1>
+          <Form onSubmit={handleSubmit}>
+            <Row>
+              <Col>
+                <Form.Group controlId="formBasicFirstName">
+                  <Form.Label>First Name</Form.Label>
+                  <Form.Control
                     type="text"
-                    placeholder="Enter Address"
-                    value={address}
-                    onChange={handleAddressChange}
+                    placeholder="Enter First Name"
+                    value={firstName}
+                    onChange={handleFirstNameChange}
                     required
-                />
-              </Form.Group>
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group controlId="formBasicLastName">
+                  <Form.Label>Last Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Last Name"
+                    value={lastName}
+                    onChange={handleLastNameChange}
+                    required
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
 
-              <Row>
-                <Col>
-                  <Form.Group controlId="formBasicDateOfBirth">
-                    <Form.Label>Date of Birth</Form.Label>
-                    <Form.Control
-                        type="date"
-                        value={dateOfBirth}
-                        onChange={handleDateOfBirthChange}
-                        required
-                    />
-                  </Form.Group>
-                </Col>
-                <Col>
-                  <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control
-                        type="email"
-                        placeholder="Enter email"
-                        value={email}
-                        onChange={handleEmailChange}
-                        required
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
+            <Form.Group controlId="formBasicAddress">
+              <Form.Label>Address</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Address"
+                value={address}
+                onChange={handleAddressChange}
+                required
+              />
+            </Form.Group>
 
-              <Button variant="primary" type="submit" className="w-100 mt-3">
-                Register
-              </Button>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
+            <Row>
+              <Col>
+                <Form.Group controlId="formBasicDateOfBirth">
+                  <Form.Label>Date of Birth</Form.Label>
+                  <Form.Control
+                    type="date"
+                    value={dateOfBirth}
+                    onChange={handleDateOfBirthChange}
+                    required
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group controlId="formBasicEmail">
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control
+                    type="email"
+                    placeholder="Enter email"
+                    value={email}
+                    onChange={handleEmailChange}
+                    required
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <Button variant="primary" type="submit" className="w-100 mt-3">
+              Register
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
@@ -186,41 +187,45 @@ function App() {
   const [dateOfBirth, setDateOfBirth] = useState('');
   const [email, setEmail] = useState('');
 
- 
+
 
   const handleLoginSubmit = (event) => {
     event.preventDefault();
 
-    const fs = require('fs');
-
-    fs.readFile('data.json', (err, data) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      const jsonData = JSON.parse(data);
-      console.log(jsonData);
-    });
   };
   const handleSignUpSubmit = (event) => {
     event.preventDefault();
     // Handle registration logic here
-    const fs = require('fs');
+    const newData = {
+      first_name: firstName,
+      last_name: lastName,
+      location: address,
+      birth_date: dateOfBirth,
+      email_address: email,
+      user_password: password
+    };
 
-    const data = { name: 'John Doe', age: 42 };
+    // fetch('account.json', {
+    //   method: 'PUT',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(newData)
+    // })
+    //   .then(response => console.log(response))
+    //   .catch(error => console.error(error));
+    const jsonStr = JSON.stringify(newData);
+    localStorage.setItem('data', jsonStr);
+    
 
-    fs.writeFile('data.json', JSON.stringify(data), (err) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      console.log('Data written to file');
-    });
+
   };
-
+  // const data = localStorage.getItem('data');
+  // const jsonData = JSON.stringify(data);
+  // console.log(jsonData);
   return (
 
-      (registerpage!==true)?
+    (registerpage !== true) ?
       (<div className="App">
         <Container>
           <Row className="justify-content-center mt-5">
@@ -230,124 +235,124 @@ function App() {
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>Email address</Form.Label>
                   <Form.Control
-                      type="email"
-                      placeholder="Enter email"
-                      value={email}
-                      onChange={(e)=>setEmail(e.target.value)}
-                      className="mb-3"
+                    type="email"
+                    placeholder="Enter email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="mb-3"
                   />
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
                   <Form.Label>Password</Form.Label>
                   <Form.Control
-                      type="password"
-                      placeholder="Password"
-                      value={password}
-                      onChange={(e)=>setPassword(e.target.value)}
-                      className="mb-3"
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="mb-3"
                   />
                 </Form.Group>
                 <Button variant="primary" type="submit" className="w-100 mt-3">
                   Submit
                 </Button>
-                <Button variant="red" type="submit" className="w-100 mt-3" onClick={()=>{setRegisterpage(true)}} >
+                <Button variant="red" type="submit" className="w-100 mt-3" onClick={() => { setRegisterpage(true) }} >
                   Register
                 </Button>
               </Form>
             </Col>
           </Row>
         </Container>
-      </div>):
-  (
-      <Container style={{ textAlign: 'center' }}>
-        <Row className="justify-content-center mt-5">
-          <Col xs={12} md={8} lg={6}>
-            <h1 className="text-center mb-4">Register</h1>
-            <Form onSubmit={handleSignUpSubmit}>
-              <Row>
-                <Col>
-                  <Form.Group controlId="formBasicFirstName">
-                    <Form.Label>First Name</Form.Label>
-                    <Form.Control
+      </div>) :
+      (
+        <Container style={{ textAlign: 'center' }}>
+          <Row className="justify-content-center mt-5">
+            <Col xs={12} md={8} lg={6}>
+              <h1 className="text-center mb-4">Register</h1>
+              <Form onSubmit={handleSignUpSubmit}>
+                <Row>
+                  <Col>
+                    <Form.Group controlId="formBasicFirstName">
+                      <Form.Label>First Name</Form.Label>
+                      <Form.Control
                         type="text"
                         placeholder="Enter First Name"
                         value={firstName}
-                        onChange={(e)=>setFirstName(e.target.value)}
+                        onChange={(e) => setFirstName(e.target.value)}
                         required
-                    />
-                  </Form.Group>
-                </Col>
-                <Col>
-                  <Form.Group controlId="formBasicLastName">
-                    <Form.Label>Last Name</Form.Label>
-                    <Form.Control
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col>
+                    <Form.Group controlId="formBasicLastName">
+                      <Form.Label>Last Name</Form.Label>
+                      <Form.Control
                         type="text"
                         placeholder="Enter Last Name"
                         value={lastName}
-                        onChange={(e)=>setLastName(e.target.value)}
+                        onChange={(e) => setLastName(e.target.value)}
                         required
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
 
-              <Form.Group controlId="formBasicAddress">
-                <Form.Label>Address</Form.Label>
-                <Form.Control
+                <Form.Group controlId="formBasicAddress">
+                  <Form.Label>Address</Form.Label>
+                  <Form.Control
                     type="text"
                     placeholder="Enter Address"
                     value={address}
-                    onChange={(e)=>setAddress(e.target.value)}
+                    onChange={(e) => setAddress(e.target.value)}
                     required
-                />
-              </Form.Group>
+                  />
+                </Form.Group>
 
-              <Row>
-                <Col>
-                  <Form.Group controlId="formBasicDateOfBirth">
-                    <Form.Label>Date of Birth</Form.Label>
-                    <Form.Control
+                <Row>
+                  <Col>
+                    <Form.Group controlId="formBasicDateOfBirth">
+                      <Form.Label>Date of Birth</Form.Label>
+                      <Form.Control
                         type="date"
                         value={dateOfBirth}
-                        onChange={(e)=>setDateOfBirth(e.target.value)}
+                        onChange={(e) => setDateOfBirth(e.target.value)}
                         required
-                    />
-                  </Form.Group>
-                </Col>
-                <Col>
-                  <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col>
+                    <Form.Group controlId="formBasicEmail">
+                      <Form.Label>Email address</Form.Label>
+                      <Form.Control
                         type="email"
                         placeholder="Enter email"
                         value={email}
-                        onChange={(e)=>setEmail(e.target.value)}
+                        onChange={(e) => setEmail(e.target.value)}
                         required
-                    />
-                  </Form.Group>
-                </Col>
-                <Col>
-                  <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col>
+                    <Form.Group controlId="formBasicEmail">
+                      <Form.Label>Password</Form.Label>
+                      <Form.Control
                         type="password"
                         placeholder="password"
                         value={password}
-                        onChange={(e)=>setPassword(e.target.value)}
+                        onChange={(e) => setPassword(e.target.value)}
                         required
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
 
-              <Button variant="primary" type="submit" className="w-100 mt-3">
-                Register
-              </Button>
-            </Form>
-          </Col>
-        </Row>
-      </Container>)
+                <Button variant="primary" type="submit" className="w-100 mt-3">
+                  Register
+                </Button>
+              </Form>
+            </Col>
+          </Row>
+        </Container>)
 
 
 
