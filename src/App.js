@@ -311,7 +311,7 @@ function App() {
                         placeholder="Enter First Name"
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
-                        required
+
                       />
                     </Form.Group>
                   </Col>
@@ -323,7 +323,7 @@ function App() {
                         placeholder="Enter Last Name"
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
-                        required
+
                       />
                     </Form.Group>
                   </Col>
@@ -336,7 +336,7 @@ function App() {
                     placeholder="Enter Address"
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
-                    required
+
                   />
                 </Form.Group>
 
@@ -348,7 +348,7 @@ function App() {
                         type="date"
                         value={dateOfBirth}
                         onChange={(e) => setDateOfBirth(e.target.value)}
-                        required
+
                       />
                     </Form.Group>
                   </Col>
@@ -360,7 +360,7 @@ function App() {
                         placeholder="Enter email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        required
+
                       />
                     </Form.Group>
                   </Col>
@@ -372,7 +372,7 @@ function App() {
                         placeholder="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        required
+
                       />
                     </Form.Group>
                   </Col>
