@@ -179,50 +179,20 @@ function App() {
   const [registerpage, setRegisterpage] = useState(false);
 
 
-  // const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  // const handleEmailChange = (event) => {
-  //   setEmail(event.target.value);
-  // };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   // Handle login logic here
-  // };
-
-  //-----------
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [address, setAddress] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState('');
   const [email, setEmail] = useState('');
 
-  const handleFirstNameChange = (event) => {
-    setFirstName(event.target.value);
-  };
+ 
 
-  const handleLastNameChange = (event) => {
-    setLastName(event.target.value);
+  const handleLoginSubmit = (event) => {
+    event.preventDefault();
+    // Handle registration logic here
   };
-
-  const handleAddressChange = (event) => {
-    setAddress(event.target.value);
-  };
-
-  const handleDateOfBirthChange = (event) => {
-    setDateOfBirth(event.target.value);
-  };
-
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
+  const handleSignUpSubmit = (event) => {
     event.preventDefault();
     // Handle registration logic here
   };
@@ -235,7 +205,7 @@ function App() {
           <Row className="justify-content-center mt-5">
             <Col xs={12} md={6}>
               <h1 className="text-center mb-4">Login</h1>
-              <Form onSubmit={handleSubmit}>
+              <Form onSubmit={handleLoginSubmit}>
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>Email address</Form.Label>
                   <Form.Control
@@ -273,7 +243,7 @@ function App() {
         <Row className="justify-content-center mt-5">
           <Col xs={12} md={8} lg={6}>
             <h1 className="text-center mb-4">Register</h1>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSignUpSubmit}>
               <Row>
                 <Col>
                   <Form.Group controlId="formBasicFirstName">
