@@ -3,44 +3,45 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 
-
-
-
-
-
 function App() {
   const [registerpage, setRegisterpage] = useState(false);
 
+  //function to check the validity of email input
   function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   }
 
-
+ //function to check the validity of names
   function hasNumber(str) {
     return /\d/.test(str);
   }
 
+  //function to check the validity of the date of birth
   function isOver18Years(dateStr) {
     const inputDate = new Date(dateStr);
     const currentDate = new Date();
     const diff = currentDate.getTime() - inputDate.getTime();
-
+    console.log(dateStr=="")
     const diffYears = diff / (1000 * 60 * 60 * 24 * 365.25); // Approximate number of years (leap year is taken into account)
     return diffYears >= 18;
   }
 
+  //function to check the validity of dates
   function IsValidDate(dateStr) {
     const inputDate = new Date(dateStr);
     const currentDate = new Date();
     return inputDate > currentDate;
 
   }
+
+  //function to check the validity of password
   function isValidPassword(password) {
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-+_!@#$%^&*.,?])[0-9a-zA-Z-+_!@#$%^&*.,?]{8,}$/;
     return passwordRegex.test(password);
   }
 
+  //variable
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -49,7 +50,7 @@ function App() {
   const [email, setEmail] = useState('');
 
 
-
+  //function to handle the submission of the login form
   const handleLoginSubmit = (event) => {
     event.preventDefault();
     const login_data = {
@@ -73,6 +74,7 @@ function App() {
     }
 
   };
+  //function to handle signup form submission
   const handleSignUpSubmit = (event) => {
     event.preventDefault();
     // Handle registration logic here
@@ -84,6 +86,8 @@ function App() {
       email_address: email,
       user_password: password
     };
+
+
     // validation
     let alert_message = ""
     if ((newData.first_name === "")
@@ -91,7 +95,8 @@ function App() {
       || (newData.user_password === "")
       || (newData.location === "")
     ) {
-      alert("no empty fields")
+      alert_message += "no empty fields.\n"
+
     }
     if (hasNumber(newData.first_name)) {
       alert_message += "first name can not a number.\n"
@@ -102,7 +107,7 @@ function App() {
       console.log(alert_message)
     }
 
-    if (IsValidDate(newData.birth_date)) {
+    if (IsValidDate(newData.birth_date) || newData.birth_date=="") {
       alert_message += "Incorrect Date.\n"
       console.log(alert_message)
     } else {
@@ -143,18 +148,18 @@ function App() {
       // Store the updated array back in local storage
       const jsonArray = JSON.stringify(myArray)
       localStorage.setItem('myArray', jsonArray);
+      setRegisterpage(false)
+
     }
 
     if (alert_message !== "") {
       alert(alert_message)
     }
 
-    setRegisterpage(false)
 
   };
-  // const data = localStorage.getItem('data');
-  // const jsonData = JSON.stringify(data);
-  // console.log(jsonData);
+
+
   return (
 
     (registerpage !== true) ?
@@ -188,9 +193,11 @@ function App() {
                 <Button variant="primary" type="submit" className="w-100 mt-3">
                   Submit
                 </Button>
-                <Button variant="red" className="w-100 mt-3" onClick={() => { setRegisterpage(true) }} >
-                  Register
-                </Button>
+                <h2 style={{cursor: 'pointer'}} variant="red" className="w-100 mt-3" onClick={() => { setRegisterpage(true) }} >
+                  Don't have an account? register here
+                </h2>
+
+
               </Form>
             </Col>
           </Row>
@@ -252,6 +259,7 @@ function App() {
                       />
                     </Form.Group>
                   </Col>
+
                   <Col>
                     <Form.Group controlId="formBasicEmail">
                       <Form.Label>Email address</Form.Label>
@@ -281,9 +289,13 @@ function App() {
                 <Button variant="primary" type="submit" className="w-100 mt-3" >
                   Register
                 </Button>
-                <Button variant="red" className="w-100 mt-3" onClick={() => { setRegisterpage(false) }} >
-                  Login
-                </Button>
+                <h2 style={{cursor: 'pointer'}} variant="red" className="w-100 mt-3" onClick={() => { setRegisterpage(false) }} >
+                  Already have an account? login here
+                </h2>
+                <br/>
+                <h5>Note: You must be at least 18 years-old to be eligible to apply</h5>
+
+
               </Form>
             </Col>
           </Row>
